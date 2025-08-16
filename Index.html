@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROZA - Air Dry Clay Products</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* style.css */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #5e35b1; /* Purple */
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .product-card .price {
+            font-size: 1.2em;
+            color: #d81b60; /* Pink */
+            margin-bottom: 10px;
+        }
+
+        .product-card button {
+            background-color: #ba68c8; /* Light Purple */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .product-card button:hover {
+            background-color: #9c27b0; /* Darker Purple */
+        }
+
+        /* Order Form Styles */
+        .order-form {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .order-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #777;
+        }
+
+        .order-form input,
+        .order-form select,
+        .order-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .order-form select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4L2 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right .75rem top 50%;
+            background-size: .65rem auto;
+        }
+
+        .order-form button {
+            background-color: #4caf50; /* Green */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .order-form button:hover {
+            background-color: #388e3c; /* Darker Green */
+        }
+
+        #total-amount {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2196f3; /* Blue */
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        /* Cart Styles */
+        #cart {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #cart h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #5e35b1;
+        }
+
+        #cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        #cart li:last-child {
+            border-bottom: none;
+        }
+
+        /* Mobile-First Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-card {
+                padding: 10px;
+            }
+
+            .product-card button {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>ROZA - Air Dry Clay Products</h1>
+
+        <section id="products">
+            <h2>Our Products</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <img src="img1.jpg" alt="Air Dry Clay 1">
+                    <div class="price">$19.99</div>
+                    <button onclick="orderNow('Air Dry Clay 1', 19.99)">Order Now</button>
+                    <button onclick="addToCart('Air Dry Clay 1', 19.99, 'img1.jpg')">Add to Cart</button>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <img src="img2.jpg" alt="Air Dry Clay 2">
+                    <div class="price">$24.99</div>
+                    <button onclick="orderNow('Air Dry Clay 2', 24.99)">Order Now</button>
+                    <button onclick="addToCart('Air Dry Clay 2', 24.99, 'img2.jpg')">Add to Cart</button>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <img src="img3.jpg" alt="Air Dry Clay 3">
+                    <div class="price">$29.99</div>
+                    <button onclick="orderNow('Air Dry Clay 3', 29.99)">Order Now</button>
+                    <button onclick="addToCart('Air Dry Clay 3', 29.99, 'img3.jpg')">Add to Cart</button>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <img src="img4.jpg" alt="Air Dry Clay 4">
+                    <div class="price">$15.99</div>
+                    <button onclick="orderNow('Air Dry Clay 4', 15.99)">Order Now</button>
+                    <button onclick="addToCart('Air Dry Clay 4', 15.99, 'img4.jpg')">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="cart">
+            <h2>Shopping Cart</h2>
+            <ul id="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </ul>
+            <p id="cart-empty">Your cart is empty.</p>
+        </section>
+
+        <section id="order-form" style="display: none;">
+            <h2>Order Details</h2>
+            <form id="orderForm">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+
+                <label for="primaryPhone">Primary Phone Number:</label>
+                <input type="tel" id="primaryPhone" name="primaryPhone" required>
+
+                <label for="alternatePhone">Alternate Phone Number:</label>
+                <input type="tel" id="alternatePhone" name="alternatePhone">
+
+                <label for="governorate">Governorate:</label>
+                <select id="governorate" name="governorate" required onchange="updateCities()">
+                    <option value="">Select Governorate</option>
+                    <option value="Cairo">Cairo</option>
+                    <option value="Giza">Giza</option>
+                    <option value="Qalyubia">Qalyubia</option>
+                </select>
+
+                <label for="city">City:</label>
+                <select id="city" name="city" required>
+                    <option value="">Select City</option>
+                </select>
+
+                <label for="detailedAddress">Detailed Address:</label>
+                <textarea id="detailedAddress" name="detailedAddress" rows="4" required></textarea>
+
+                <label for="landmark">Landmark:</label>
+                <input type="text" id="landmark" name="landmark">
+
+                <p id="total-amount">Total Amount: $0.00</p>
+
+                <button type="button" onclick="confirmOrder()">Confirm Order</button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsList = document.getElementById('cart-items');
+        const cartEmptyMessage = document.getElementById('cart-empty');
+        const totalAmountElement = document.getElementById('total-amount');
+
+        // Function to update the cart display
+        function updateCartDisplay() {
+            cartItemsList.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartEmptyMessage.style.display = 'block';
+            } else {
+                cartEmptyMessage.style.display = 'none';
+                cart.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `${item.name} - $${item.price} <button onclick="removeFromCart('${item.name}')">Remove</button>`;
+                    cartItemsList.appendChild(listItem);
+                    total += item.price;
+                });
+            }
+            totalAmountElement.textContent = `Total Amount: $${total.toFixed(2)}`;
+             localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
+        }
+
+        // Function to add an item to the cart
+        function addToCart(name, price, image) {
+            cart.push({ name: name, price: price, image: image });
+            updateCartDisplay();
+        }
+
+        // Function to remove an item from cart
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCartDisplay();
+        }
+
+
+        // Function to handle "Order Now" button click
+        function orderNow(name, price) {
+            addToCart(name, price, `img_for_${name}.jpg`); // Assuming image naming convention
+
+            document.getElementById('products').style.display = 'none';
+            document.getElementById('cart').style.display = 'block';
+            document.getElementById('order-form').style.display = 'block';
+            updateCartDisplay(); // Ensure cart is displayed
+        }
+
+        // Function to update city options based on governorate
+        function updateCities() {
+            const governorate = document.getElementById('governorate').value;
+            const citySelect = document.getElementById('city');
+            citySelect.innerHTML = '<option value="">Select City</option>';
+
+            let cities = [];
+            if (governorate === 'Cairo') {
+                cities = ['Cairo', 'New Cairo', '15th of May City'];
+            } else if (governorate === 'Giza') {
+                cities = ['Giza', '6th of October City', 'Sheikh Zayed City'];
+            } else if (governorate === 'Qalyubia') {
+                cities = ['Banha', 'Shubra El Kheima', 'Obour'];
+            }
+
+            cities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                citySelect.appendChild(option);
+            });
+        }
+
+        // Function to confirm the order and open WhatsApp
+        function confirmOrder() {
+            const fullName = document.getElementById('fullName').value;
+            const primaryPhone = document.getElementById('primaryPhone').value;
+            const alternatePhone = document.getElementById('alternatePhone').value;
+            const governorate = document.getElementById('governorate').value;
+            const city = document.getElementById('city').value;
+            const detailedAddress = document.getElementById('detailedAddress').value;
+            const landmark = document.getElementById('landmark').value;
+
+            let orderDetails = "Order Details:\n";
+            orderDetails += `Full Name: ${fullName}\n`;
+            orderDetails += `Primary Phone: ${primaryPhone}\n`;
+            orderDetails += `Alternate Phone: ${alternatePhone}\n`;
+            orderDetails += `Governorate: ${governorate}\n`;
+            orderDetails += `City: ${city}\n`;
+            orderDetails += `Detailed Address: ${detailedAddress}\n`;
+            orderDetails += `Landmark: ${landmark}\n`;
+
+            orderDetails += "\nItems:\n";
+            cart.forEach(item => {
+                orderDetails += `- ${item.name} - $${item.price}\n`;
+            });
+
+            orderDetails += `\nTotal Amount: $${getTotalAmount().toFixed(2)}`;
+
+            const whatsappMessage = encodeURIComponent(orderDetails);
+            const whatsappNumber = "+201093315568";
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+            window.open(whatsappURL, '_blank');
+        }
+
+        //Helper function to calculate the total amount
+        function getTotalAmount() {
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price;
+            });
+            return total;
+        }
+
+        // Initial cart display update
+        updateCartDisplay();
+    </script>
+</body>
+
+</html>
